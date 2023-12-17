@@ -1,0 +1,22 @@
+<p-dialog [modal]="true" [visible]="true" [style]="{ width: '450px' }" [header]="header" class="p-fluid" [closable]="false">
+    <ng-template pTemplate="content">
+        <form [formGroup]="form">
+            <div *ngFor="let element of formTemplateElements" class="field">
+                <label [for]="element.id">{{ element.label }}</label>
+                <input
+                    [type]="element.type"
+                    [pInputText]="element.type === 'text'"
+                    [pInputTextarea]="element.type === 'textarea'"
+                    [pInputNumber]="element.type === 'number'"
+                    [id]="element.id"
+                    [formControlName]="element.id"
+                />
+                <small *ngIf="form.get(element.id).invalid && form.get(element.id).touched" class="ng-dirty ng-invalid">{{ element.errorMessage ?? 'error' }}</small>
+            </div>
+        </form>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Save" icon="pi pi-check" iconPos="right" class="p-button-text" (click)="save()" [disabled]="!form.valid"></button>
+        <button pButton pRipple label="Cancel" icon="pi pi-times" iconPos="right" class="p-button-text" (click)="cancel()"></button>
+    </ng-template>
+</p-dialog>

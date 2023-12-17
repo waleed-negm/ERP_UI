@@ -1,0 +1,42 @@
+<div class="grid">
+    <div class="col-12">
+        <div class="card px-6 py-6">
+            <p-toast></p-toast>
+            <app-toolbar
+                [newButtonLabel]="newButtonLabel"
+                [newButtonIcon]="'pi pi-plus'"
+                [canDelete]="false"
+                (newClick)="openElementDialog()"
+                (exportClick)="tableComponent.table.exportCSV()"
+            ></app-toolbar>
+
+            <app-table
+                #dt
+                [tableData]="firstTableData"
+                [(selectedElements)]="selectedElements"
+                [tableColumns]="firstTableColumns"
+                [caption]="tableCaption"
+                (editClick)="editElement($event)"
+                [canEdit]="false"
+                [canDelete]="false"
+            >
+            </app-table>
+        </div>
+
+        <!-- <app-supplier-details-dialog [visible]="showDialog" [supplier]="element" (onSave)="add()" (onCancel)="hideDialog()"></app-supplier-details-dialog> -->
+
+        <!-- <p-dialog [(visible)]="deleteSupplierDialog" header="Confirm" [modal]="true" [style]="{ width: '450px' }">
+            <div class="flex align-items-center justify-content-center">
+                <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem"></i>
+                <span *ngIf="supplier"
+                    >Are you sure you want to delete <b>{{ supplier.name }}</b
+                    >?</span
+                >
+            </div>
+            <ng-template pTemplate="footer">
+                <button pButton pRipple icon="pi pi-times" class="p-button-text" label="No" (click)="deleteSupplierDialog = false"></button>
+                <button pButton pRipple icon="pi pi-check" class="p-button-text" label="Yes" (click)="confirmDelete()"></button>
+            </ng-template>
+        </p-dialog> -->
+    </div>
+</div>

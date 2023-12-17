@@ -1,22 +1,19 @@
 import { NgModule } from '@angular/core';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-import { AppComponent } from './app.component';
+import { BrowserModule } from '@angular/platform-browser';
+
 import { AppRoutingModule } from './app-routing.module';
-import { AppLayoutModule } from './modules/layout/app.layout.module';
-import { NotfoundComponent } from './modules/demo/components/notfound/notfound.component';
-import { ProductService } from './modules/demo/service/product.service';
-import { CountryService } from './modules/demo/service/country.service';
-import { CustomerService } from './modules/demo/service/customer.service';
-import { EventService } from './modules/demo/service/event.service';
-import { IconService } from './modules/demo/service/icon.service';
-import { NodeService } from './modules/demo/service/node.service';
-import { PhotoService } from './modules/demo/service/photo.service';
+import { AppComponent } from './app.component';
+import { AppLayoutModule } from 'src/modules/layout/layout.module';
+import { NotfoundComponent } from '../modules/feature/notfound/notfound.component';
 import { MessageService } from 'primeng/api';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ErrorInterceptor } from '../core/interceptors/error-handling.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [AppComponent, NotfoundComponent],
-    imports: [AppRoutingModule, AppLayoutModule],
-    providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }, CountryService, CustomerService, EventService, IconService, NodeService, PhotoService, ProductService, MessageService],
+    imports: [BrowserModule, AppRoutingModule, AppLayoutModule, BrowserAnimationsModule],
+    providers: [MessageService, { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

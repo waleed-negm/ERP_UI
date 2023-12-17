@@ -1,0 +1,31 @@
+<div class="grid">
+    <div class="col-12">
+        <div class="card px-6 py-6">
+            <p-toast></p-toast>
+
+            <app-toolbar
+                [newButtonLabel]="newButtonLabel"
+                [newButtonIcon]="'pi pi-plus'"
+                [canDelete]="false"
+                (newClick)="newElement()"
+                (exportClick)="tableComponent.table.exportCSV()"
+            ></app-toolbar>
+
+            <app-table
+                #dt
+                [tableData]="firstTableData"
+                [tableActions]="tableActions"
+                [(selectedElements)]="selectedElements"
+                [tableColumns]="firstTableColumns"
+                [caption]="tableCaption"
+                [canEdit]="true"
+                [canDelete]="false"
+                (editClick)="editElement($event)"
+            >
+            </app-table>
+        </div>
+
+        <app-dynamic-form *ngIf="showElementDialog" [formElements]="formElements" [formData]="formData" (onSave)="save($event)" (onCancel)="hideElementDialog()" #dynamicForm></app-dynamic-form>
+
+    </div>
+</div>
