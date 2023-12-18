@@ -3,6 +3,7 @@ import { ComponentCommonFunctionality } from '../../../shared/classes/component-
 import { NPDetails } from '../../../../core/Data/models/Expenditure/INPDetails.interface';
 import { TableComponent } from '../../../shared/components/table/table.component';
 import { TableColumn } from '../../../shared/interfaces/ITableColumn';
+import { FormElement } from '../../../shared/interfaces/IForm-element.interface';
 
 @Component({
     selector: 'app-suppliers-chk',
@@ -37,7 +38,53 @@ export class SuppliersChkComponent extends ComponentCommonFunctionality<NPDetail
         ].reverse();
     };
 
-    override setupFormElements = (): void => {};
+    override setupFormElements = (): void => {
+        this.formElements = [
+            //     {
+            //     label: 'طريقة دفع الايصال',
+            //     id: 'type',
+            //     type: 'dropdown',
+            //     required: true,
+            //     options: ['safe', 'bank', 'custody', 'check'],
+            //     errorMessage: 'طريقة دفع الايصال مطلوبة.',
+            //   } as FormElement,
+            {
+                label: 'المبلغ المدفوع',
+                id: 'amountPaid',
+                type: 'text',
+                required: true,
+                errorMessage: 'المبلغ المدفوع مطلوب.',
+            } as FormElement,
+            {
+                label: 'تاريخ الدفع',
+                id: 'paymentDate',
+                type: 'text', // You might want to use a date picker here
+                required: true,
+                errorMessage: 'تاريخ الدفع مطلوب.',
+            } as FormElement,
+            {
+                label: 'رقم الايصال',
+                id: 'receiptNumber',
+                type: 'text',
+                required: true,
+                errorMessage: 'رقم الايصال مطلوب.',
+            } as FormElement,
+            //   {
+            //     label: 'الحساب',
+            //     id: 'account',
+            //     type: 'dropdown',
+            //     required: true,
+            //     options: ['safe', 'bank', 'custody', 'check'],
+            //     errorMessage: 'الحساب مطلوب.',
+            //   } as FormElement,
+            {
+                label: 'التوصيف',
+                id: 'description',
+                type: 'text',
+                required: false, // Not required
+            } as FormElement,
+        ];
+    };
 
     override setupTableActions = (): void => {};
 

@@ -1,10 +1,10 @@
 export class FormElement {
     id: string;
     label: string;
-    placeHolder: string;
     type: ValidInputTypes;
     required: boolean = true;
     errorMessage: string | null;
+    placeHolder: string;
     hidden: boolean = false;
 }
 type ValidInputTypes =

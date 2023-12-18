@@ -1,8 +1,9 @@
 import { Component, Input, Output, EventEmitter, ViewChild, OnInit } from '@angular/core';
 import { Table } from 'primeng/table';
-import { TableColumn } from './IColumn.interface';
-import { TableActions } from '../../classes/table-actions';
 import { TableListActionInterface } from '../../interfaces/ITable-action.interface';
+import * as FileSaver from 'file-saver';
+import { ExportColumn } from '../../interfaces/IExport-column.interface';
+import { TableColumn } from '../../interfaces/ITableColumn';
 
 @Component({
     selector: 'app-table',
@@ -28,15 +29,45 @@ export class TableComponent implements OnInit {
     @ViewChild('dt') table: Table;
 
     globalFilterFields: string[] = [];
+    exportColumns: ExportColumn[] = [];
     dataKey: string = '';
 
     ngOnInit(): void {
-        this.globalFilterFields = this.tableColumns.filter((col) => col.canFilter).map((col) => col.field);
+        this.globalFilterFields = this.tableColumns.filter((col) => col.filterable).map((col) => col.field);
         this.dataKey = this.tableColumns.find((col) => col.isKey)?.field;
+        this.exportColumns = this.tableColumns.map((col) => ({ title: col.header, dataKey: col.field }));
     }
 
-    onGlobalFilter(table: Table, event: Event) {
+    onGlobalFilter(event: Event) {
         const inputElement = event.target as HTMLInputElement;
-        table.filterGlobal(inputElement.value, 'contains');
+        this.table.filterGlobal(inputElement.value, 'contains');
+    }
+
+    public exportPdf() {
+        import('jspdf').then((jsPDF) => {
+            import('jspdf-autotable').then((x) => {
+                const doc = new jsPDF.default('p', 'px', 'a4');
+                (doc as any).autoTable(this.exportColumns, this.tableData);
+                doc.save('products.pdf');
+            });
+        });
+    }
+
+    public exportExcel() {
+        import('xlsx').then((xlsx) => {
+            const worksheet = xlsx.utils.json_to_sheet(this.tableData);
+            const workbook = { Sheets: { data: worksheet }, SheetNames: ['data'] };
+            const excelBuffer: any = xlsx.write(workbook, { bookType: 'xlsx', type: 'array' });
+            this.saveAsExcelFile(excelBuffer, 'products');
+        });
+    }
+
+    saveAsExcelFile(buffer: any, fileName: string): void {
+        let EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+        let EXCEL_EXTENSION = '.xlsx';
+        const data: Blob = new Blob([buffer], {
+            type: EXCEL_TYPE,
+        });
+        FileSaver.saveAs(data, fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION);
     }
 }

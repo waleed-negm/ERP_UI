@@ -12,7 +12,9 @@ export class ToolbarComponent {
 
     @Output() newClick = new EventEmitter<void>();
     @Output() deleteClick = new EventEmitter<void>();
-    @Output() exportClick = new EventEmitter<void>();
+    @Output() exportCSVClick = new EventEmitter<void>();
+    @Output() exportExcelClick = new EventEmitter<void>();
+    @Output() exportPDFClick = new EventEmitter<void>();
 
     onNewClick() {
         this.newClick.emit();
@@ -22,8 +24,16 @@ export class ToolbarComponent {
         this.deleteClick.emit();
     }
 
-    onExportClick() {
-        this.exportClick.emit();
+    onExportCSVClick() {
+        this.exportCSVClick.emit();
+    }
+
+    onExportExcel() {
+        this.exportExcelClick.emit();
+    }
+
+    onExportPdf() {
+        this.exportPDFClick.emit();
     }
 }
 

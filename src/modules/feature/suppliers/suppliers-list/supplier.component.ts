@@ -15,7 +15,7 @@ export class SupplierComponent extends ComponentCommonFunctionality<Supplier, Co
 
     override setupTableColumns = (): void => {
         this.firstTableColumns = [
-            { field: 'id', header: '#', isKey: true } as TableColumn,
+            { field: 'id', header: '#', isKey: true, sortable: true, filterable: true } as TableColumn,
             { field: 'nameAR', header: 'الأسم' } as TableColumn,
             { field: 'name', header: 'الأسم (ألانجليزي)' } as TableColumn,
             { field: 'phone1', header: 'التليفون 1' } as TableColumn,

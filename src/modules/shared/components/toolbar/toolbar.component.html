@@ -1,20 +1,33 @@
 <p-toolbar styleClass="mb-4">
     <ng-template pTemplate="right">
         <div class="my-2">
-            <button pButton pRipple label="{{ newButtonLabel }}" icon="{{ newButtonIcon }}" class="p-button-raised p-button-text p-button-success mr-2" (click)="onNewClick()" pTooltip="new"></button>
             <button
+                pButton
+                pRipple
+                icon="{{ newButtonIcon }}"
+                class="p-button-raised p-button-success mr-2"
+                (click)="onNewClick()"
+                pTooltip="new"
+                tooltipPosition="bottom"
+                ></button>
+                <button
                 *ngIf="canDelete"
                 pButton
                 pRipple
-                label="حذف"
                 icon="pi pi-trash"
-                class="p-button-raised p-button-text p-button-danger"
+                class="p-button-raised p-button-danger"
                 (click)="onDeleteClick()"
                 [disabled]="!isDeleteButtonEnabled"
+                pTooltip="delete"
+                tooltipPosition="bottom"
             ></button>
         </div>
     </ng-template>
     <ng-template pTemplate="left">
-        <button pButton pRipple label="export to excel" icon="pi pi-upload" class="p-button-raised p-button-text p-button-help" pTooltip="export to excel" (click)="onExportClick()"></button>
+        <div class="flex">
+            <button type="button" pButton pRipple icon="pi pi-file" (click)="onExportCSVClick()" class="mr-2" pTooltip="CSV" tooltipPosition="bottom"></button>
+            <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="onExportExcel()" class="p-button-success mr-2" pTooltip="XLS" tooltipPosition="bottom"></button>
+            <button type="button" pButton pRipple icon="pi pi-file-pdf" (click)="onExportPdf()" class="p-button-danger mr-2" severity="danger" pTooltip="PDF" tooltipPosition="bottom"></button>
+        </div>
     </ng-template>
 </p-toolbar>

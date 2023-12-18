@@ -13,31 +13,42 @@
     [selectionMode]="selectionMode"
     [rowHover]="rowHover"
     [dataKey]="dataKey"
+    styleClass="p-datatable-striped"
+    [tableStyle]="{'min-width': '50rem'}"
+
+    [scrollable]="true"
+    scrollHeight="50vh"
 >
     <ng-template pTemplate="caption">
         <div class="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
             <h5 class="m-0">{{ caption }}</h5>
             <span class="block mt-2 md:mt-0 p-input-icon-left">
                 <i class="pi pi-search"></i>
-                <input pInputText type="text" (input)="onGlobalFilter(dt, $event)" placeholder="Search..." class="w-full sm:w-auto" />
+                <input pInputText type="text" (input)="onGlobalFilter($event)" placeholder="Search..." class="w-full sm:w-auto" />
             </span>
         </div>
     </ng-template>
 
     <ng-template pTemplate="header">
         <tr>
-            <th></th>
-            <th *ngFor="let col of tableColumns">
-                {{ col.header }}
-            </th>
+            <!-- <th *ngFor="let col of tableColumns"></th> -->
             <!-- <th>
                 <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
             </th> -->
+            <ng-container *ngFor="let col of tableColumns">
+                <th style="text-align: center;" *ngIf="col.sortable" [pSortableColumn]="col.field">{{ col.header }} <p-sortIcon [field]="col.field"></p-sortIcon></th>
+                <th style="text-align: center;" *ngIf="!col.sortable">{{ col.header }}</th>
+            </ng-container>
+            <th></th>
         </tr>
     </ng-template>
 
     <ng-template pTemplate="body" let-data let-columns="tableColumns">
         <tr>
+            <!-- <td>
+                <p-tableCheckbox [value]="element"></p-tableCheckbox>
+            </td> -->
+            <td style="text-align: center;" *ngFor="let col of tableColumns">{{ data[col.field] ?? '-' }}</td>
             <td>
                 <div class="flex">
                     <Button
@@ -54,10 +65,6 @@
                         ></Button>
                 </div>
             </td>
-            <td *ngFor="let col of tableColumns">{{ data[col.field] ?? '-' }}</td>
-            <!-- <td>
-                <p-tableCheckbox [value]="element"></p-tableCheckbox>
-            </td> -->
         </tr>
     </ng-template>
 </p-table>

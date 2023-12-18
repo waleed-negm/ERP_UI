@@ -1,16 +1,16 @@
 <div class="grid">
     <div class="col-12">
         <div class="card px-6 py-6">
-            <p-toast></p-toast>
-
+            <p-toast position="top-left"></p-toast>
             <app-toolbar
                 [newButtonLabel]="newButtonLabel"
                 [newButtonIcon]="'pi pi-plus'"
                 [canDelete]="false"
                 (newClick)="newElement()"
-                (exportClick)="tableComponent.table.exportCSV()"
+                (exportCSVClick)="tableComponent.table.exportCSV()"
+                (exportExcelClick)="tableComponent.exportExcel()"
+                (exportPDFClick)="tableComponent.exportPdf()"
             ></app-toolbar>
-
             <app-table
                 #dt
                 [tableData]="firstTableData"
@@ -24,8 +24,6 @@
             >
             </app-table>
         </div>
-
-        <app-dynamic-form *ngIf="showElementDialog" [formElements]="formElements" [formData]="formData" (onSave)="save($event)" (onCancel)="hideElementDialog()" #dynamicForm></app-dynamic-form>
-
     </div>
+    <app-dynamic-form *ngIf="showElementDialog" [formElements]="formElements" [formData]="formData" (onSave)="save($event)" (onCancel)="hideElementDialog()" #dynamicForm></app-dynamic-form>
 </div>
