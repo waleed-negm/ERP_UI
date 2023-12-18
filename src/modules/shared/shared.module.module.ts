@@ -7,7 +7,6 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
-import { ToastModule } from 'primeng/toast';
 import { TableComponent } from './components/table/table.component';
 import { TableModule } from 'primeng/table';
 import { DialogModule } from 'primeng/dialog';
@@ -42,7 +41,6 @@ import { TooltipModule } from 'primeng/tooltip';
         FormsModule,
         ButtonModule,
         RippleModule,
-        ToastModule,
         TooltipModule,
     ],
     imports: [
@@ -61,7 +59,6 @@ import { TooltipModule } from 'primeng/tooltip';
         FormsModule,
         ButtonModule,
         RippleModule,
-        ToastModule,
         ReactiveFormsModule,
         TooltipModule,
     ],

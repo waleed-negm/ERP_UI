@@ -1,15 +1,21 @@
-import { Component, OnDestroy, Renderer2, ViewChild } from '@angular/core';
+import { Component, OnDestroy, Renderer2, ViewChild, inject } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
 import { AppSidebarComponent } from 'src/modules/layout/sidebar/app.sidebar.component';
 import { AppTopBarComponent } from 'src/modules/layout/topbar/app.topbar.component';
 import { LayoutService } from './layout-service.service';
+import { ConfirmationService } from 'primeng/api';
 
 @Component({
     selector: 'app-layout',
     templateUrl: './layout.component.html',
 })
 export class AppLayoutComponent implements OnDestroy {
+    public confirmationService = inject(ConfirmationService);
+    public layoutService = inject(LayoutService);
+    public renderer = inject(Renderer2);
+    public router = inject(Router);
+
     overlayMenuOpenSubscription: Subscription;
 
     menuOutsideClickListener: any;
@@ -20,7 +26,7 @@ export class AppLayoutComponent implements OnDestroy {
 
     @ViewChild(AppTopBarComponent) appTopbar!: AppTopBarComponent;
 
-    constructor(public layoutService: LayoutService, public renderer: Renderer2, public router: Router) {
+    constructor() {
         this.overlayMenuOpenSubscription = this.layoutService.overlayOpen$.subscribe(() => {
             if (!this.menuOutsideClickListener) {
                 this.menuOutsideClickListener = this.renderer.listen('document', 'click', (event) => {

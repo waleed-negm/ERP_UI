@@ -17,6 +17,9 @@ import { AppTopBarComponent } from 'src/modules/layout/topbar/app.topbar.compone
 import { AppLayoutComponent } from './layout.component';
 import { AppConfigModule } from './config/config.module';
 import { PanelMenuModule } from 'primeng/panelmenu';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ToastModule } from 'primeng/toast';
+import { ConfirmationService } from 'primeng/api';
 
 @NgModule({
     declarations: [AppMenuitemComponent, AppTopBarComponent, AppFooterComponent, AppMenuComponent, AppSidebarComponent, AppLayoutComponent],
@@ -33,7 +36,10 @@ import { PanelMenuModule } from 'primeng/panelmenu';
         RouterModule,
         AppConfigModule,
         PanelMenuModule,
+        ToastModule,
+        ConfirmDialogModule,
     ],
     exports: [AppLayoutComponent],
+    providers: [ConfirmationService],
 })
 export class AppLayoutModule {}
