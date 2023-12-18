@@ -13,11 +13,11 @@ export class ExpensesItemsComponent extends ComponentCommonFunctionality<Expense
 
     override setupTableColumns = (): void => {
         this.firstTableColumns = [
-            { field: 'id', header: '#', isKey: true } as TableColumn,
-            { field: 'expenseName', header: 'expense name' } as TableColumn,
-            { field: 'accNum', header: 'account num' } as TableColumn,
-            { field: 'expenseTypeId', header: 'expense type id' } as TableColumn,
-            { field: 'expenseType', header: 'expense type' } as TableColumn,
+            { field: 'id', header: '#', sortable: true, filterable: true, visible: true, isKey: true },
+            { field: 'expenseName', header: 'expense name', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'accNum', header: 'account num', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'expenseTypeId', header: 'expense type id', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'expenseType', header: 'expense type', sortable: true, filterable: true, visible: true, isKey: false },
         ].reverse();
     };
 

@@ -15,13 +15,13 @@ export class SupplierComponent extends ComponentCommonFunctionality<Supplier, Co
 
     override setupTableColumns = (): void => {
         this.firstTableColumns = [
-            { field: 'id', header: '#', isKey: true, sortable: true, filterable: true } as TableColumn,
-            { field: 'nameAR', header: 'الأسم' } as TableColumn,
-            { field: 'name', header: 'الأسم (ألانجليزي)' } as TableColumn,
-            { field: 'phone1', header: 'التليفون 1' } as TableColumn,
-            { field: 'phone2', header: 'التليفون 2' } as TableColumn,
-            { field: 'email', header: 'البريد الالكتروني' } as TableColumn,
-            { field: 'supplierBalance', header: 'الرصيد' } as TableColumn,
+            { field: 'id', header: '#', sortable: true, filterable: true, visible: true, isKey: true },
+            { field: 'nameAR', header: 'الأسم', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'name', header: 'الأسم (ألانجليزي)', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'phone1', header: 'التليفون 1', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'phone2', header: 'التليفون 2', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'email', header: 'البريد الالكتروني', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'supplierBalance', header: 'الرصيد', sortable: true, filterable: true, visible: true, isKey: false },
         ].reverse();
     };
 

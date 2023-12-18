@@ -16,17 +16,17 @@ export class ChecksInSafeComponent extends ComponentCommonFunctionality<CheckInS
 
     override setupTableColumns = (): void => {
         this.firstTableColumns = [
-            { field: 'id', header: '#', isKey: true } as TableColumn,
-            { field: 'clientName', header: 'الأسم العميل' } as TableColumn,
-            { field: 'checkNum', header: 'رقم الشيك' } as TableColumn,
-            { field: 'checkAmount', header: 'مبلغ الشيك' } as TableColumn,
-            { field: 'currencyAbbr', header: 'العملة' } as TableColumn,
-            { field: 'dueDate', header: 'تاريخ الاستحقاق' } as TableColumn,
-            { field: 'orginalBank', header: 'orginalBank' } as TableColumn,
-            { field: 'checkStatus', header: 'حالة الشيك' } as TableColumn,
-            { field: 'paid', header: 'المدفوع' } as TableColumn,
-            { field: 'unPaid', header: 'unPaid' } as TableColumn,
-            { field: 'checkAmountForiegn', header: 'checkAmountForiegn' } as TableColumn,
+            { field: 'id', header: '#', sortable: true, filterable: true, visible: true, isKey: true },
+            { field: 'clientName', header: 'الأسم العميل', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'checkNum', header: 'رقم الشيك', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'checkAmount', header: 'مبلغ الشيك', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'currencyAbbr', header: 'العملة', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'dueDate', header: 'تاريخ الاستحقاق', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'orginalBank', header: 'orginalBank', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'checkStatus', header: 'حالة الشيك', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'paid', header: 'المدفوع', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'unPaid', header: 'unPaid', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'checkAmountForiegn', header: 'checkAmountForiegn', sortable: true, filterable: true, visible: true, isKey: false },
         ].reverse();
     };
 

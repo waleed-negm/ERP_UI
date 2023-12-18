@@ -15,14 +15,14 @@ export class OpeningBalanceComponent extends ComponentCommonFunctionality<Openin
 
     override setupTableColumns = (): void => {
         this.firstTableColumns = [
-            { field: 'id', header: '#', isKey: true } as TableColumn,
-            { field: 'accNum', header: 'رقم الحساب' } as TableColumn,
-            { field: 'accountName', header: 'أسم الحساب' } as TableColumn,
-            { field: 'currecnyAbbr', header: 'العملة' } as TableColumn,
-            { field: 'debit', header: 'مدين' } as TableColumn,
-            { field: 'credit', header: 'دائن' } as TableColumn,
-            { field: 'usedRate', header: 'سعر الصرف' } as TableColumn,
-            { field: 'side', header: 'side' } as TableColumn,
+            { field: 'id', header: '#', sortable: true, filterable: true, visible: true, isKey: true },
+            { field: 'accNum', header: 'رقم الحساب', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'accountName', header: 'أسم الحساب', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'currecnyAbbr', header: 'العملة', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'debit', header: 'مدين', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'credit', header: 'دائن', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'usedRate', header: 'سعر الصرف', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'side', header: 'side', sortable: true, filterable: true, visible: true, isKey: false },
         ].reverse();
     };
 

@@ -14,17 +14,17 @@ export class AccountsListComponent extends ComponentCommonFunctionality<AccountL
 
     override setupTableColumns = (): void => {
         this.firstTableColumns = [
-            { field: 'id', header: '#', isKey: true } as TableColumn,
-            { field: 'accNum', header: 'رقم الحساب' } as TableColumn,
-            { field: 'accountName', header: 'أسم الحساب (ألانجليزي)' } as TableColumn,
-            { field: 'accountNameAr', header: 'أسم الحساب (عربي)' } as TableColumn,
-            { field: 'accTypeName', header: 'نوع الحساب' } as TableColumn,
-            { field: 'balance', header: 'الرصيد' } as TableColumn,
-            { field: 'startingBalance', header: 'الرصيد الافتتاحي' } as TableColumn,
-            { field: 'isParent', header: 'isParent' } as TableColumn,
-            { field: 'currencyAbbr', header: 'العملة' } as TableColumn,
-            { field: 'isActive', header: 'isActive' } as TableColumn,
-            { field: 'branchName', header: 'الفرع' } as TableColumn,
+            { field: 'id', header: '#', sortable: true, filterable: true, visible: true, isKey: true },
+            { field: 'accNum', header: 'رقم الحساب', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'accountName', header: 'أسم الحساب (ألانجليزي)', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'accountNameAr', header: 'أسم الحساب (عربي)', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'accTypeName', header: 'نوع الحساب', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'balance', header: 'الرصيد', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'startingBalance', header: 'الرصيد الافتتاحي', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'isParent', header: 'isParent', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'currencyAbbr', header: 'العملة', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'isActive', header: 'isActive', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'branchName', header: 'الفرع', sortable: true, filterable: true, visible: true, isKey: false },
         ].reverse();
     };
 

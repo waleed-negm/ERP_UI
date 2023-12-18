@@ -13,13 +13,13 @@ export class AccountsTreeComponent extends ComponentCommonFunctionality<AccountC
 
     override setupTableColumns = (): void => {
         this.firstTableColumns = [
-            { field: 'id', header: '#', isKey: true } as TableColumn,
-            { field: 'accountType', header: 'account type' } as TableColumn,
-            { field: 'accountCategory', header: 'account category' } as TableColumn,
-            { field: 'parentAccNum', header: 'parent account number' } as TableColumn,
-            { field: 'count', header: 'count' } as TableColumn,
-            { field: 'balanceSheet', header: 'balance sheet' } as TableColumn, // الميزانية
-            { field: 'incomeStatement', header: 'income statement' } as TableColumn, // قايمة الدخل
+            { field: 'id', header: '#', sortable: true, filterable: true, visible: true, isKey: true },
+            { field: 'accountType', header: 'account type', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'accountCategory', header: 'account category', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'parentAccNum', header: 'parent account number', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'count', header: 'count', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'balanceSheet', header: 'balance sheet', sortable: true, filterable: true, visible: true, isKey: false }, // الميزانية
+            { field: 'incomeStatement', header: 'income statement', sortable: true, filterable: true, visible: true, isKey: false }, // قايمة الدخل
         ].reverse();
     };
 

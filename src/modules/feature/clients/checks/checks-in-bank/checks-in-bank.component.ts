@@ -16,15 +16,15 @@ export class ChecksInBankComponent extends ComponentCommonFunctionality<CheckInB
 
     override setupTableColumns = (): void => {
         this.firstTableColumns = [
-            { field: 'id', header: '#', isKey: true } as TableColumn,
-            { field: 'clientName', header: 'الأسم العميل' } as TableColumn,
-            { field: 'checkNum', header: 'رقم الشيك' } as TableColumn,
-            { field: 'checkAmount', header: 'مبلغ الشيك' } as TableColumn,
-            { field: 'dueDate', header: 'تاريخ الاستحقاق' } as TableColumn,
-            { field: 'checkStatus', header: 'حالة الشيك' } as TableColumn,
-            { field: 'bankAccountName', header: 'البنك' } as TableColumn,
-            { field: 'orginalBank', header: 'علي البنك' } as TableColumn,
-            { field: 'bankAccountNumber', header: 'bankAccountNumber' } as TableColumn,
+            { field: 'id', header: '#', sortable: true, filterable: true, visible: true, isKey: true },
+            { field: 'clientName', header: 'الأسم العميل', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'checkNum', header: 'رقم الشيك', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'checkAmount', header: 'مبلغ الشيك', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'dueDate', header: 'تاريخ الاستحقاق', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'checkStatus', header: 'حالة الشيك', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'bankAccountName', header: 'البنك', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'orginalBank', header: 'علي البنك', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'bankAccountNumber', header: 'bankAccountNumber', sortable: true, filterable: true, visible: true, isKey: false },
         ].reverse();
     };
 

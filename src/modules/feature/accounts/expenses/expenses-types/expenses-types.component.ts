@@ -12,7 +12,10 @@ export class ExpensesTypesComponent extends ComponentCommonFunctionality<Expense
     @ViewChild(TableComponent) tableComponent: TableComponent | undefined;
 
     override setupTableColumns = (): void => {
-        this.firstTableColumns = [{ field: 'id', header: '#', isKey: true } as TableColumn, { field: 'expenseTypeName', header: 'expense type name' } as TableColumn].reverse();
+        this.firstTableColumns = [
+            { field: 'id', header: '#', sortable: true, filterable: true, visible: true, isKey: true },
+            { field: 'expenseTypeName', header: 'expense type name' } as TableColumn,
+        ].reverse();
     };
 
     override setupFormElements = (): void => {};

@@ -14,27 +14,27 @@ export class SuppliersChkComponent extends ComponentCommonFunctionality<NPDetail
 
     override setupTableColumns = (): void => {
         this.firstTableColumns = [
-            { field: 'id', header: '#', isKey: true } as TableColumn,
-            { field: 'supplierName', header: 'أسم المورد' } as TableColumn,
-            { field: 'chkNum', header: 'رقم الشيك' } as TableColumn,
-            { field: 'amountForgin', header: 'المبلغ' } as TableColumn,
-            { field: 'amountLocal', header: 'المبلغ بالجنية' } as TableColumn,
-            { field: 'currencyAbbrev', header: 'العملة' } as TableColumn,
-            { field: 'dueDate', header: 'تاريخ الأستحقاق' } as TableColumn,
-            { field: 'bankAccountNum', header: 'الحساب البنكي' } as TableColumn,
-            { field: 'writingDate', header: 'تاريخ التحرير' } as TableColumn,
+            { field: 'id', header: '#', sortable: true, filterable: true, visible: true, isKey: true },
+            { field: 'supplierName', header: 'أسم المورد', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'chkNum', header: 'رقم الشيك', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'amountForgin', header: 'المبلغ', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'amountLocal', header: 'المبلغ بالجنية', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'currencyAbbrev', header: 'العملة', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'dueDate', header: 'تاريخ الأستحقاق', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'bankAccountNum', header: 'الحساب البنكي', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'writingDate', header: 'تاريخ التحرير', sortable: true, filterable: true, visible: true, isKey: false },
         ].reverse();
         this.secondTableColumns = [
-            { field: 'id', header: '#', isKey: true } as TableColumn,
-            { field: 'supplierName', header: 'أسم المورد' } as TableColumn,
-            { field: 'chkNum', header: 'رقم الشيك' } as TableColumn,
-            { field: 'amountForgin', header: 'المبلغ' } as TableColumn,
-            { field: 'amountLocal', header: 'المبلغ بالجنية' } as TableColumn,
-            { field: 'currencyAbbrev', header: 'العملة' } as TableColumn,
-            { field: 'dueDate', header: 'تاريخ الأستحقاق' } as TableColumn,
-            { field: 'bankAccountNum', header: 'الحساب البنكي' } as TableColumn,
-            { field: 'writingDate', header: 'تاريخ التحرير' } as TableColumn,
-            { field: 'paid', header: 'المدفوع' } as TableColumn,
+            { field: 'id', header: '#', sortable: true, filterable: true, visible: true, isKey: true },
+            { field: 'supplierName', header: 'أسم المورد', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'chkNum', header: 'رقم الشيك', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'amountForgin', header: 'المبلغ', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'amountLocal', header: 'المبلغ بالجنية', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'currencyAbbrev', header: 'العملة', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'dueDate', header: 'تاريخ الأستحقاق', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'bankAccountNum', header: 'الحساب البنكي', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'writingDate', header: 'تاريخ التحرير', sortable: true, filterable: true, visible: true, isKey: false },
+            { field: 'paid', header: 'المدفوع', sortable: true, filterable: true, visible: true, isKey: false },
         ].reverse();
     };
 
