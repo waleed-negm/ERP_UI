@@ -17,16 +17,14 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { RatingModule } from 'primeng/rating';
-import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { GenericDetailsDialogComponent } from './components/generic-details-dialog/generic-details-dialog.component';
 import { DynamicFormComponent } from './components/dynamic-form-dialog/dynamic-form-dialog.component';
 import { TooltipModule } from 'primeng/tooltip';
 
 @NgModule({
-    declarations: [TableComponent, ToolbarComponent, ConfirmationDialogComponent, GenericDetailsDialogComponent, DynamicFormComponent],
+    declarations: [TableComponent, ToolbarComponent, GenericDetailsDialogComponent, DynamicFormComponent],
     exports: [
         GenericDetailsDialogComponent,
-        ConfirmationDialogComponent,
         DynamicFormComponent,
         FileUploadModule,
         RatingModule,
