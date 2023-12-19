@@ -20,6 +20,7 @@ import { PanelMenuModule } from 'primeng/panelmenu';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmationService } from 'primeng/api';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
 
 @NgModule({
     declarations: [AppMenuitemComponent, AppTopBarComponent, AppFooterComponent, AppMenuComponent, AppSidebarComponent, AppLayoutComponent],
@@ -38,6 +39,7 @@ import { ConfirmationService } from 'primeng/api';
         PanelMenuModule,
         ToastModule,
         ConfirmDialogModule,
+        ConfirmPopupModule,
     ],
     exports: [AppLayoutComponent],
     providers: [ConfirmationService],

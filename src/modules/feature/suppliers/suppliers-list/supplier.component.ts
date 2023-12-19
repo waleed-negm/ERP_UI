@@ -13,6 +13,8 @@ import { TableColumn } from '../../../shared/interfaces/ITableColumn';
 export class SupplierComponent extends ComponentCommonFunctionality<Supplier, ContactCreating> implements OnInit, OnDestroy {
     @ViewChild(TableComponent) tableComponent: TableComponent | undefined;
 
+    override tableCaption: string = '';
+
     override setupTableColumns = (): void => {
         this.firstTableColumns = [
             { field: 'id', header: '#', sortable: true, filterable: true, visible: true, isKey: true },
@@ -39,7 +41,7 @@ export class SupplierComponent extends ComponentCommonFunctionality<Supplier, Co
     override setupTableActions = (): void => {
         this.tableActions = [
             {
-                callback: (row: ContactCreating) => this.deleteElement(row),
+                callback: (row: ContactCreating) => this.delete(row),
                 icon: 'pi pi-trash',
                 class: 'p-button-text p-button-rounded p-button-danger',
                 tooltip: 'delete',
@@ -51,13 +53,13 @@ export class SupplierComponent extends ComponentCommonFunctionality<Supplier, Co
                 tooltip: 'edit',
             },
             {
-                callback: (row: ContactCreating) => this.editElement(row),
+                callback: (row: ContactCreating) => this.purchase(row),
                 icon: 'pi pi-calculator',
                 class: 'p-button-text p-button-rounded p-button-secondary mr-2',
                 tooltip: 'purchase',
             },
             {
-                callback: (row: ContactCreating) => this.editElement(row),
+                callback: (row: ContactCreating) => this.payment(row),
                 icon: 'pi pi-money-bill',
                 class: 'p-button-text p-button-rounded p-button-secondary mr-2',
                 tooltip: 'payment',
@@ -72,6 +74,25 @@ export class SupplierComponent extends ComponentCommonFunctionality<Supplier, Co
             },
         });
     };
+
+    delete(data: any) {
+        this.confirmationService.confirm({
+            target: event.target as EventTarget,
+            message: 'Do you want to delete this record?',
+            icon: 'pi pi-info-circle',
+            acceptButtonStyleClass: 'p-button-danger p-button-sm',
+            accept: () => {
+                this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'Record deleted', life: 3000 });
+            },
+            reject: () => {
+                this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
+            },
+        });
+    }
+
+    purchase(data: any) {}
+
+    payment(data: any) {}
 
     save(data: ContactCreating): void {
         const cleanData = this.removeNullOrUndefinedProperties(data);

@@ -1,7 +1,7 @@
 import { Table } from 'primeng/table';
 import { TableColumn } from '../interfaces/ITableColumn';
 import { Injectable, inject } from '@angular/core';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { APIContextService } from '../../../core/Data/services/api-context.service';
 import { BaseModel } from '../components/generic-details-dialog/IBaseModel.interface';
 import { FormElement } from '../interfaces/IForm-element.interface';
@@ -13,6 +13,7 @@ import { Subscription } from 'rxjs';
 export class ComponentCommonFunctionality<T extends BaseModel, N extends BaseModel, T2 extends BaseModel = any> implements TableSetupFunctions {
     public contextService = inject(APIContextService);
     public messageService = inject(MessageService);
+    public confirmationService = inject(ConfirmationService);
 
     newButtonLabel: string;
     tableCaption: string;
