@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppLayoutModule } from 'src/modules/layout/layout.module';
-import { NotfoundComponent } from '../modules/feature/notfound/notfound.component';
+import { NotfoundComponent } from '../modules/shared/components/notfound/notfound.component';
 import { MessageService } from 'primeng/api';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor } from '../core/interceptors/error-handling.interceptor';

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppLayoutComponent } from 'src/modules/layout/layout.component';
-import { NotfoundComponent } from '../modules/feature/notfound/notfound.component';
+import { NotfoundComponent } from '../modules/shared/components/notfound/notfound.component';
 
 const routes: Routes = [
     {
@@ -15,7 +15,7 @@ const routes: Routes = [
             },
         ],
     },
-    { path: 'auth', loadChildren: () => import('../modules/feature/auth/auth.module').then((m) => m.AuthModule) },
+    { path: 'auth', loadChildren: () => import('../modules/auth/auth.module').then((m) => m.AuthModule) },
     { path: 'notfound', component: NotfoundComponent },
     { path: '**', redirectTo: '/notfound' },
 ];

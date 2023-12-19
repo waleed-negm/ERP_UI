@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter, ViewChild, OnInit } from '@angu
 import { Table } from 'primeng/table';
 import { TableListActionInterface } from '../../interfaces/ITable-action.interface';
 import * as FileSaver from 'file-saver';
+import * as XLSX from 'xlsx';
 import { ExportColumn } from '../../interfaces/IExport-column.interface';
 import { TableColumn } from '../../interfaces/ITableColumn';
 
@@ -54,12 +55,10 @@ export class TableComponent implements OnInit {
     }
 
     public exportExcel() {
-        import('xlsx').then((xlsx) => {
-            const worksheet = xlsx.utils.json_to_sheet(this.tableData);
-            const workbook = { Sheets: { data: worksheet }, SheetNames: ['data'] };
-            const excelBuffer: any = xlsx.write(workbook, { bookType: 'xlsx', type: 'array' });
-            this.saveAsExcelFile(excelBuffer, 'products');
-        });
+        const worksheet = XLSX.utils.json_to_sheet(this.tableData);
+        const workbook = { Sheets: { data: worksheet }, SheetNames: ['data'] };
+        const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+        this.saveAsExcelFile(excelBuffer, 'products');
     }
 
     saveAsExcelFile(buffer: any, fileName: string): void {
